@@ -1,1 +1,45 @@
+import sys
+from functools import lru_cache
 
+count = 0
+
+def stairs(n):
+    global count
+    count += 1
+    if n <= 1:
+        return 1
+    return stairs(n-1) + stairs(n-2)
+
+@lru_cache(None)
+def memo(n):
+    if n <= 1:
+        return 1
+    return memo(n-1) + memo(n-2)
+
+def loop(n):
+    a, b = 1, 1
+    for i in range(2, n+1):
+        a, b = b, a+b
+    return b
+
+print("Ways for n=1 to 6:")
+for n in range(1, 7):
+    print(n, memo(n))
+
+print("\nNaive recursion:")
+for n in (10, 20, 25, 30):
+    count = 0
+    print(n, stairs(n), "Calls:", count)
+
+print("\nMemoisation:")
+memo.cache_clear()
+print("n=25:", memo(25))
+print("Calls:", memo.cache_info().misses)
+
+print("\nLoop result for n=1000:")
+print(loop(1000))
+
+try:
+    print("Memo n=1000:", memo(1000))
+except RecursionError:
+    print("Recursion limit reached!")
