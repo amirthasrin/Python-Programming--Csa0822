@@ -1,1 +1,25 @@
+def add_item(item, order=None):
+    if order is None:
+        order = []
+    order.append(item)
+    return order
 
+def calculate(amount, gst=18):
+    tax = amount * gst / 100
+    return amount + tax, tax
+
+def customer(name, amount):
+    total, tax = calculate(amount)
+    print(name, "Total:", total, "GST:", tax)
+
+a = add_item("Book")
+b = add_item("Pen")
+c = add_item("Bag")
+
+print("Order 1:", a)
+print("Order 2:", b)
+print("Order 3:", c)
+
+customer("Customer 1", 1000)
+customer("Customer 2", 2000)
+customer("Customer 3", 3000)
