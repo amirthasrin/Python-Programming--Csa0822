@@ -1,1 +1,21 @@
+def normalise(text):
+    return text.upper().replace(" ", "").replace("-", "")
 
+def is_valid(reg):
+    reg = normalise(reg)
+    if len(reg) not in (9, 10):
+        return False
+    return (reg[:2].isalpha() and
+            reg[2:4].isdigit() and
+            reg[4:-4].isalpha() and
+            reg[-4:].isdigit() and
+            len(reg[4:-4]) in (1, 2))
+
+tests = ["tn 09 ab 1234", "KA-01-M-0007",
+         "TN9AB1234", "TN 22 1234 AB"]
+
+for t in tests:
+    r = normalise(t)
+    print("Registration:", r)
+    print("Status:", "VALID" if is_valid(r) else "INVALID")
+    print("----------------")
