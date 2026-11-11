@@ -1,1 +1,19 @@
+def separate_if(u, r, e):
+    x = []
+    if u <= 100: x.append("Full Subsidy")
+    if u <= 200 and r: x.append("Partial Subsidy")
+    if u > 200 and e: x.append("Special Subsidy")
+    if not x: x.append("No Subsidy")
+    return x
 
+def if_elif(u, r, e):
+    if u <= 100: return "Full Subsidy"
+    elif 101 <= u <= 200 and r: return "Partial Subsidy"
+    elif u > 200 and e: return "Special Subsidy"
+    else: return "No Subsidy"
+
+tests = [(100,1,0),(101,1,0),(200,1,0),(201,1,0),
+         (50,0,0),(150,0,0),(250,0,1),(250,1,0)]
+
+for u,r,e in tests:
+    print(u, separate_if(u,r,e), if_elif(u,r,e))
