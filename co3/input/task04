@@ -1,1 +1,13 @@
 
+ai = {"001", "004", "007", "009"}
+iot = {"002", "004", "009", "010"}
+
+all_students = {f"{i:03d}" for i in range(1, 11)}
+
+both = ai & iot
+exactly_one = ai ^ iot
+neither = all_students - (ai | iot)
+
+print("clash:", sorted(both))
+print("exactly one:", sorted(exactly_one))
+print("neither:", sorted(neither))
