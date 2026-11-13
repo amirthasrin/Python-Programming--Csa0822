@@ -1,0 +1,16 @@
+trains = {
+    101: {"name": "Express", "stops": [("Chennai", "08:00", "08:10"), ("Salem", "11:00", "11:05")], "days": {"Mon", "Tue"}},
+    102: {"name": "Superfast", "stops": [("Chennai", "09:00", "09:10"), ("Madurai", "13:00", "13:05")], "days": {"Mon", "Wed"}},
+    103: {"name": "Local", "stops": [("Salem", "10:00", "10:05")], "days": {"Tue"}},
+    104: {"name": "Passenger", "stops": [("Chennai", "07:00", "07:05")], "days": {"Mon"}},
+    105: {"name": "Mail", "stops": [("Madurai", "12:00", "12:05")], "days": {"Wed"}}
+}
+
+station = "Chennai"
+day = "Mon"
+
+for no, data in trains.items():
+    if day in data["days"]:
+        for s, a, d in data["stops"]:
+            if s == station:
+                print(no, data["name"], d)
