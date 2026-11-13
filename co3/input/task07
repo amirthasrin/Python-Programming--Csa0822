@@ -1,0 +1,17 @@
+contacts = [
+    {"name": "Ravi", "phone": "+91 98400 12345", "email": "ravi@gmail.com"},
+    {"name": "Ravi Kumar", "phone": "9840012345", "email": "rk@gmail.com"},
+    {"name": "Priya", "phone": "9876543210", "email": "priya@gmail.com"}
+]
+
+merged = {}
+
+for c in contacts:
+    phone = ''.join(filter(str.isdigit, c["phone"]))[-10:]
+    if phone not in merged:
+        merged[phone] = {"name": c["name"], "phones": set(), "emails": set()}
+
+    merged[phone]["phones"].add(phone)
+    merged[phone]["emails"].add(c["email"])
+
+print(merged)
