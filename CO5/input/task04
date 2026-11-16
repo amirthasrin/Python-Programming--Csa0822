@@ -1,1 +1,7 @@
+from time import perf_counter 
+start = perf_counter() 
+total = sum(range(1000000)) 
+duration = perf_counter() - start 
+print(f"Calculation Result: {total}") 
+print(f"Execution Time: {duration:.6f} seconds") 
 
