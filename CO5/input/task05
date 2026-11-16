@@ -1,1 +1,10 @@
+positive_words = ["clean", "fast", "good"] 
+negative_words = ["bad", "smoke", "dirty"] 
+text = "Smoke from the factory, air is bad." 
+words = text.lower().replace(",", "").split() 
+score = sum(1 for w in words if w in positive_words) - sum(1 for w in words if w in 
+negative_words) 
+sentiment = "positive" if score > 0 else "negative" if score < 0 else "neutral" 
+print(f"Complaint: {text}") 
+print(f"Sentiment Result: {sentiment}") 
 
