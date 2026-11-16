@@ -1,1 +1,9 @@
+readings = [48.0, 95.0, 121.0] 
+summary = { 
+    "min": min(readings), 
+    "max": max(readings), 
+    "mean": sum(readings) / len(readings), 
+    "count": len(readings) 
+} 
+print("Daily Summary:", summary) 
 
