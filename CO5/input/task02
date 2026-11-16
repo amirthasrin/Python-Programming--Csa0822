@@ -1,1 +1,5 @@
+values = [48.0, 95.0, 121.0] 
+mn, mx = min(values), max(values) 
+normalized = [(v - mn) / (mx - mn) for v in values] 
+print("Normalized PM2.5:", [round(x, 3) for x in normalized]) 
 
