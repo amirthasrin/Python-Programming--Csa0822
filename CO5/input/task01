@@ -1,1 +1,8 @@
+import csv 
+import io 
+raw_data = "station,date,pm25\nAdyar,2026-10-01,48\nAdyar,2026-10-02,NA\n" 
+f = io.StringIO(raw_data) 
+reader = csv.DictReader(f) 
+for row in reader: 
+    print(f"Inspected Station: {row['station']}, Date: {row['date']}, PM2.5: {row['pm25']}") 
 
