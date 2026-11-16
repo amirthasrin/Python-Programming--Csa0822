@@ -1,1 +1,30 @@
+import csv 
+import io 
+RAW = """station,date,pm25 
+Adyar,2026-10-01,48 
+Adyar,2026-10-02,NA 
+Adyar,2026-10-03,-5 
+Guindy,2026-10-01,95 
+Guindy,2026-10-02,-5 
+Guindy,2026-10-03,121 
+""" 
+def load_clean(text): 
+    rows = [] 
+    f = io.StringIO(text.strip()) 
+    reader = csv.DictReader(f) 
+    for row in reader: 
+        val = row["pm25"] 
+        if val == "NA" or val == "": 
+            continue 
+        try: 
+            pm = float(val) 
+            if pm < 0: 
+                continue 
+            rows.append((row["station"], row["date"], pm)) 
+        except ValueError: 
+            continue 
+    return rows 
+clean_data = load_clean(RAW) 
+print("Cleaned Data Rows:", clean_data) 
+ 
 
